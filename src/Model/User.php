@@ -1,0 +1,125 @@
+<?php namespace Consys\Advisor\Integration\Model;
+
+use Consys\Advisor\Integration\Writer\Writer;
+use Validator;
+
+class User extends Model
+{
+
+    private $academicGoals = [];
+    private $transcript = [];
+    private $messages = [];
+    private $advisees = [];
+
+    static protected $rules = [
+        'id' => "required|max:255",
+        'user_type' => "required|max:255",
+        'username' => "required|max:255",
+        'name_first' => "max:255",
+        'name_middle' => "max:255",
+        'name_last' => "max:255",
+        'email' => "max:255",
+        'courses' => "integer",
+        'credits' => "numeric",
+        'gpa' => "numeric",
+        'ferpa' => "max:255",
+        'goal_scope' => "max:4294967295",
+        'option1' => "max:255",
+        'option2' => "max:255",
+        'option3' => "max:255",
+        'option4' => "max:255",
+        'option5' => "max:255",
+        'option6' => "max:255",
+        'option7' => "max:255",
+        'option8' => "max:255",
+        'option9' => "max:255",
+        'option10' => "max:255",
+        'option11' => "max:255",
+        'option12' => "max:255",
+        'option13' => "max:255",
+        'option14' => "max:255",
+        'option15' => "max:255",
+    ];
+
+    public function addCourse(array $data)
+    {
+        return $this->transcript[] = new TranscriptCourse($data, $this->writer);
+    }
+
+    public function addGoal(array $data)
+    {
+        return $this->academicGoals[] = new AcademicGoal($data, $this->writer);
+    }
+
+    public function addMessage(array $data)
+    {
+        return $this->messages[] = new Message($data, $this->writer);
+    }
+
+    public function addAdvisee(array $data)
+    {
+        return $this->advisees[] = new Advisee($data, $this->writer);
+    }
+
+    protected function write()
+    {
+        $writer = $this->writer;
+
+        $writer->startObject('user');
+        $writer->startProperty('id');
+        $writer->value($this->get('id'));
+        $writer->endProperty();
+
+        foreach(static::fields() as $field)
+        {
+            if($this->get($field) !== null && $field !== 'id')
+            {
+                $writer->startObject($field);
+                $writer->value($this->get($field));
+                $writer->endObject();
+            }
+        }
+
+        if(count($this->academicGoals) > 0)
+        {
+            $writer->startArray('academic_goals');
+            foreach($this->academicGoals as $goal)
+            {
+                $goal->write($writer);
+            }
+            $writer->endArray();
+        }
+
+        if(count($this->transcript) > 0)
+        {
+            $writer->startArray('transcript');
+            foreach($this->transcript as $course)
+            {
+                $course->write($writer);
+            }
+            $writer->endArray();
+        }
+
+        if(count($this->messages) > 0)
+        {
+            $writer->startArray('messages');
+            foreach($this->messages as $message)
+            {
+                $message->write($writer);
+            }
+            $writer->endArray();
+        }
+
+        if(count($this->advisees) > 0)
+        {
+            $writer->startArray('advisees');
+            foreach($this->advisees as $advisee)
+            {
+                $advisee->write($writer);
+            }
+            $writer->endArray();
+        }
+
+        $writer->endObject();
+    }
+}
