@@ -1,2 +1,2 @@
-# advisor-integrate
+# advisor-integration
 Advisor Integration Library
