@@ -14,7 +14,7 @@ class XML extends Writer
             throw new IntegrationException("Failed to open file: " . $fileName);
         }
 
-        $this->writer->setIndent($options['indent']??false);
+        $this->writer->setIndent($options['indent']??true);
         $this->writer->startDocument('1.0','UTF-8');
     }
 
