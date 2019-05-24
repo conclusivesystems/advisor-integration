@@ -2,13 +2,9 @@
 
 abstract class Writer
 {
-    protected $request_id = 0;
-
-    public function __construct(string $request_id)
+    public function __construct(string $fileName = "php://output", array $options = [])
     {
-        $this->request_id = $request_id;
-
-        $this->open();
+        $this->open($fileName, $options);
     }
 
     public function __destruct()
@@ -16,7 +12,7 @@ abstract class Writer
         $this->close();
     }
 
-    abstract protected function open();
+    abstract protected function open(string $fileName, array $options);
     abstract protected function close();
 
     abstract public function startArray(string $name);

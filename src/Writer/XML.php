@@ -1,27 +1,25 @@
 <?php namespace Consys\Advisor\Integration\Writer;
 
+use Consys\Advisor\Integration\IntegrationException;
+
 class XML extends Writer
 {
     private $writer = null;
 
-    protected function open()
+    protected function open(string $fileName, array $options)
     {
         $this->writer = new \XMLWriter();
-        $this->writer->openUri("php://output");
-        $this->writer->setIndent(true);
+        if(!$this->writer->openUri($fileName))
+        {
+            throw new IntegrationException("Failed to open file: " . $fileName);
+        }
+
+        $this->writer->setIndent($options['indent']??false);
         $this->writer->startDocument('1.0','UTF-8');
-        $this->writer->startElement('response');
-        $this->writer->startAttribute("id");
-        $this->writer->text($this->request_id);
-        $this->writer->endAttribute();
-        $this->writer->startAttribute("version");
-        $this->writer->text("2.0");
-        $this->writer->endAttribute();
     }
 
     protected function close()
     {
-        $this->writer->endElement();
         $this->writer->endDocument();
     }
 

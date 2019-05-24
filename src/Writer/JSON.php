@@ -1,15 +1,17 @@
 <?php namespace Consys\Advisor\Integration\Writer;
 
+use Consys\Advisor\Integration\IntegrationException;
+
 class JSON extends Writer
 {
-    private $writer = null;
+    private $file = null;
     private $first = true;
     private $hadProperty = false;
     private $stack = [];
 
     private function output($text)
     {
-        echo $text;
+        fwrite($this->file, $text);
     }
 
     private function push(string $type, string $name, bool $hadProperty)
@@ -31,8 +33,15 @@ class JSON extends Writer
         return end($this->stack);
     }
 
-    protected function open()
+    protected function open(string $fileName, array $options)
     {
+        $this->file = fopen($fileName, "w");
+
+        if($this->file === false)
+        {
+            throw new IntegrationException("Failed to open file: " . $fileName);
+        }
+
         $this->push('object', 'response', false);
         $this->first = true;
     }
@@ -41,6 +50,8 @@ class JSON extends Writer
     {
         $this->pop();
         $this->output("}\n");
+
+        fclose($this->file);
     }
 
     public function startProperty(string $name)
