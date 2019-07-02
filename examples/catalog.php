@@ -14,23 +14,23 @@ class AdvisorIntegrationController extends Controller
 //You can loop over as many courses as are in your course-offerings list.
         $course = $catalog->addCourse([
             'id' => "5673992",
-			'prefix' => "math",
-			'number' => "101",
-			'suffix' => "",
-			'title' => "College Algebra",
-			'min_credits' => 3,
-			'max_credits' => 3,
-			'credit_type' => "S",
-			'archived' => "n",
-			'level' => "1",
-			'url' => "https://some.course-description.some-school.edu",
-			'option1' => "1",
-		]);
+            'prefix' => "math",
+            'number' => "101",
+            'suffix' => "",
+            'title' => "College Algebra",
+            'min_credits' => 3,
+            'max_credits' => 3,
+            'credit_type' => "S",
+            'archived' => "n",
+            'level' => "1",
+            'url' => "https://some.course-description.some-school.edu",
+            'option1' => "1",
+        ]);
 //Be sure to save each course individually!
-		$course->save();
+        $course->save();
 //After all courses, save the entire catalog.
-		$catalog->save();
+        $catalog->save();
 //The last act is to finalize the response.
         $response->save();
-	}
+    }
 }
