@@ -1,14 +1,14 @@
 <?php
 namespace App\Http\Controllers\IntegrationLibrary;
 use App\Http\Controllers\Controller;
-use Consys\Advisor\Integration\Writer\JSON;
+use Consys\Advisor\Integration\Writer\XML;
 use Consys\Advisor\Integration\Response;
 class AdvisorIntegrationController extends Controller
 {
 //Here we build up a complete Course Catalog file/stream.
     public function getCatalog()
     {
-        $writer = new JSON();
+        $writer = new XML();
         $response = new Response($writer);
         $catalog = $response->addCatalog();
 //You can loop over as many courses as are in your course-offerings list.

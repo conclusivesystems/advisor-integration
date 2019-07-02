@@ -1,14 +1,14 @@
 <?php
 namespace App\Http\Controllers\IntegrationLibrary;
 use App\Http\Controllers\Controller;
-use Consys\Advisor\Integration\Writer\JSON;
+use Consys\Advisor\Integration\Writer\XML;
 use Consys\Advisor\Integration\Response;
 class AdvisorIntegrationController extends Controller
 {
 //Here we build up a complete Users file/stream, including related data.
     public function getUsers()
     {
-        $writer = new JSON();
+        $writer = new XML();
         $response = new Response($writer);
         $options = $response->addOptions([
             'current_term_year'=>2019,

@@ -1,14 +1,14 @@
 <?php
 namespace App\Http\Controllers\IntegrationLibrary;
 use App\Http\Controllers\Controller;
-use Consys\Advisor\Integration\Writer\JSON;
+use Consys\Advisor\Integration\Writer\XML;
 use Consys\Advisor\Integration\Response;
 class AdvisorIntegrationController extends Controller
 {
 //Here we build up a complete Equivalencies file/stream.
     public function getEquivalencies()
     {
-        $writer = new JSON();
+        $writer = new XML();
         $response = new Response($writer);
         $equivalencies = $response->addEquivalencies();
 //You can loop over as many course equivalencies as you wish.
