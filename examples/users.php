@@ -101,7 +101,9 @@ users in the specified groups to be in the new group! This is an example ONLY! *
         ]);
 //Be sure you call $user->save() for each user!
         $user->save();
-//The last act is to save the entire users object.
+//Save the entire users object.
         $users->save();
+//The last act is to finalize the response.
+        $response->save();
     }
 }
