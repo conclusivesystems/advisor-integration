@@ -46,7 +46,7 @@ abstract class Model
         return null;
     }
 
-    static protected function fields()
+    static public function fields()
     {
         return array_combine(array_keys(static::$rules), array_keys(static::$rules));
     }

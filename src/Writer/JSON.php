@@ -48,6 +48,21 @@ class JSON extends Writer
 
     protected function close()
     {
+        while(count($this->stack) > 1)
+        {
+            switch($this->peek()->type)
+            {
+                case 'object':
+                    $this->endObject();
+                    break;
+                case 'array':
+                    $this->endArray();
+                    break;
+                case 'property':
+                    $this->endProperty();
+                    break;
+            }
+        }
         $this->pop();
         $this->output("}\n");
 
@@ -123,7 +138,16 @@ class JSON extends Writer
         {
             $this->output(",");
         }
-        $this->output(json_encode($name) . ':[');
+
+        if($this->peek()->type === 'object')
+        {
+            $this->output(json_encode($name) . ':[');
+        }
+        else
+        {
+            $this->output('[');
+        }
+
         $this->push('array', $name, false);
         $this->first = true;
     }
