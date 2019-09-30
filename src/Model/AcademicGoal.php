@@ -41,10 +41,12 @@ class AcademicGoal extends Model
                 $writer->endProperty();
             }
 
+            $writer->startArray('program_groups');
             foreach($this->groups as $group)
             {
                 $group->write($writer);
             }
+            $writer->endArray();
 
             $writer->endObject();
         }
