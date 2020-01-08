@@ -18,7 +18,7 @@ class XML extends Writer
         $this->writer->startDocument('1.0','UTF-8');
     }
 
-    protected function close()
+    public function close()
     {
         $this->writer->endDocument();
     }

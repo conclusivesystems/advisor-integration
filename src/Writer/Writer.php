@@ -13,7 +13,7 @@ abstract class Writer
     }
 
     abstract protected function open(string $fileName, array $options);
-    abstract protected function close();
+    abstract public function close();
 
     abstract public function startArray(string $name);
     abstract public function endArray();

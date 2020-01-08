@@ -46,27 +46,30 @@ class JSON extends Writer
         $this->first = true;
     }
 
-    protected function close()
+    public function close()
     {
-        while(count($this->stack) > 1)
+        if(is_resource($this->file))
         {
-            switch($this->peek()->type)
+            while(count($this->stack) > 1)
             {
-                case 'object':
-                    $this->endObject();
-                    break;
-                case 'array':
-                    $this->endArray();
-                    break;
-                case 'property':
-                    $this->endProperty();
-                    break;
+                switch($this->peek()->type)
+                {
+                    case 'object':
+                        $this->endObject();
+                        break;
+                    case 'array':
+                        $this->endArray();
+                        break;
+                    case 'property':
+                        $this->endProperty();
+                        break;
+                }
             }
-        }
-        $this->pop();
-        $this->output("}\n");
+            $this->pop();
+            $this->output("}\n");
 
-        fclose($this->file);
+            fclose($this->file);
+        }
     }
 
     public function startProperty(string $name)

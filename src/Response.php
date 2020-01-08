@@ -63,5 +63,6 @@ class Response extends Model
     protected function write()
     {
         $this->writer->endObject();
+        $this->writer->close();
     }
 }
