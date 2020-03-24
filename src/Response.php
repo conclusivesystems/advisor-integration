@@ -6,6 +6,7 @@ use Consys\Advisor\Integration\Model\Model;
 use Consys\Advisor\Integration\Model\Options;
 use Consys\Advisor\Integration\Model\Prerequisites;
 use Consys\Advisor\Integration\Model\Schedule;
+use Consys\Advisor\Integration\Model\Terms;
 use Consys\Advisor\Integration\Model\Users;
 use Consys\Advisor\Integration\Writer\Writer;
 
@@ -33,6 +34,11 @@ class Response extends Model
     public final function addCatalog()
     {
         return new Catalog($this->writer);
+    }
+
+    public final function addTerms()
+    {
+        return new Terms($this->writer);
     }
 
     public final function addEquivalencies()
