@@ -1,5 +1,6 @@
 <?php namespace Consys\Advisor\Integration\Model;
 
+use Consys\Advisor\Integration\Model\Attribute\Attribute;
 use Consys\Advisor\Integration\Writer\Writer;
 use Validator;
 
@@ -34,6 +35,13 @@ class CatalogCourse extends Model
         'option15' => "max:255",
     ];
 
+    private $attributes = [];
+
+    public final function addAttribute(array $data)
+    {
+        return $this->attributes[] = new Attribute($data, $this->writer);
+    }
+
     protected function write()
     {
         $writer = $this->writer;
@@ -52,6 +60,16 @@ class CatalogCourse extends Model
                 $writer->value($this->get($field));
                 $writer->endObject();
             }
+        }
+
+        if(count($this->attributes) > 0)
+        {
+            $writer->startArray('attributes');
+            foreach ($this->attributes as $attribute)
+            {
+                $attribute->write();
+            }
+            $writer->endArray('attributes');
         }
 
         $writer->endObject();

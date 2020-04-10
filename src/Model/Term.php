@@ -11,6 +11,8 @@ class Term extends Model
         'period' => "required|max:255",
         'start' => "date",
         'end' => "date",
+        'planstart' => "date",
+        'planend' => "date",
         'regstart' => "date",
         'regend' => "date",
     ];
