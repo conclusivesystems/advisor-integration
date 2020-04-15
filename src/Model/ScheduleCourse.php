@@ -17,6 +17,7 @@ class ScheduleCourse extends Model
         'min_credits' => "numeric",
         'max_credits' => "numeric",
         'instructor' => "max:1024",
+        'section' => "max:1024",
         'start_date' => "date",
         'end_date' => "date",
         'url' => "max:4096|url",
