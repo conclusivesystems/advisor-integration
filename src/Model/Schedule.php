@@ -12,7 +12,8 @@ class Schedule extends Model
     {
         parent::__construct([], $writer);
 
-        $this->writer->startArray("schedule");
+        $this->writer->startObject("schedule");
+        $this->writer->startArray("courses");
     }
 
     public final function addCourse(array $data)
@@ -23,5 +24,6 @@ class Schedule extends Model
     protected function write()
     {
         $this->writer->endArray();
+        $this->writer->endObject();
     }
 }
