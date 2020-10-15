@@ -11,6 +11,9 @@ class User extends Model
     private $transcript = [];
     private $messages = [];
     private $advisees = [];
+    private $athletics = [];
+    private $milestones = [];
+    private $attributes = [];
 
     static protected $rules = [
         'id' => "required|max:255",
@@ -42,8 +45,6 @@ class User extends Model
         'option15' => "max:255",
     ];
 
-    private $attributes = [];
-
     public final function addAttribute(array $data)
     {
         return $this->attributes[] = new Attribute($data, $this->writer);
@@ -57,6 +58,16 @@ class User extends Model
     public function addGoal(array $data)
     {
         return $this->academicGoals[] = new AcademicGoal($data, $this->writer);
+    }
+
+    public function addSport(array $data)
+    {
+        return $this->athletics[] = new UserSport($data, $this->writer);
+    }
+
+    public function addMilestone(array $data)
+    {
+        return $this->milestones[] = new Milestone($data, $this->writer);
     }
 
     public function addMessage(array $data)
@@ -104,6 +115,26 @@ class User extends Model
             foreach($this->transcript as $course)
             {
                 $course->write($writer);
+            }
+            $writer->endArray();
+        }
+
+        if(count($this->athletics) > 0)
+        {
+            $writer->startArray('athletics');
+            foreach($this->athletics as $sport)
+            {
+                $sport->write($writer);
+            }
+            $writer->endArray();
+        }
+
+        if(count($this->milestones) > 0)
+        {
+            $writer->startArray('milestones');
+            foreach($this->milestones as $milestone)
+            {
+                $milestone->write($writer);
             }
             $writer->endArray();
         }

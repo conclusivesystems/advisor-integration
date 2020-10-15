@@ -1,9 +1,9 @@
 <?php namespace Consys\Advisor\Integration\Model;
 
-use Consys\Advisor\Integration\Model\Prerequisite\Prerequisite;
 use Consys\Advisor\Integration\Writer\Writer;
+use Validator;
 
-class Schedule extends Model
+class Sports extends Model
 {
     static protected $rules = [
     ];
@@ -12,12 +12,12 @@ class Schedule extends Model
     {
         parent::__construct([], $writer);
 
-        $this->writer->startArray("schedule");
+        $this->writer->startArray("sports");
     }
 
-    public final function addCourse(array $data)
+    public final function addSport(array $data)
     {
-        return new ScheduleCourse($data, $this->writer);
+        return new Sport($data, $this->writer);
     }
 
     protected function write()

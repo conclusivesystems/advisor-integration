@@ -20,7 +20,14 @@ class XML extends Writer
 
     public function close()
     {
-        $this->writer->endDocument();
+        try
+        {
+            $this->writer->endDocument();
+        }
+        catch(\Exception $e)
+        {
+
+        }
     }
 
     public function startProperty(string $name)

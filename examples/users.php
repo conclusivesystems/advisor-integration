@@ -94,6 +94,34 @@ users in the specified groups to be in the new group! This is an example ONLY! *
             'repeat' => "n",
             'option1' => "1",
         ]);
+//You can loop over athletics for as many as this student has.
+        $user->addSport([
+            'code' => "FB",
+            'year' => "2018",
+            'term' => "fall",
+        ]);
+//You can loop over milestones for as many as this student has.
+        $user->addMilestone([
+            'id' => "1",
+            'name' => "Example Milestone",
+            'description' => "A Milestone to show how it is added",
+            'status' => "C",
+            'option1' => "whatever1",
+            'option2' => "whatever2",
+            'option3' => "whatever3",
+            'option4' => "whatever4",
+            'option5' => "whatever5",
+            'option6' => "whatever6",
+            'option7' => "whatever7",
+            'option8' => "whatever8",
+            'option9' => "whatever9",
+            'option10' => "whatever10",
+            'option11' => "whatever11",
+            'option12' => "whatever12",
+            'option13' => "whatever13",
+            'option14' => "whatever14",
+            'option15' => "whatever15",
+        ]);
 //You can loop over messages for as many messages as you want this user to see.
         $user->addMessage([
             'type' => "Info",

@@ -6,6 +6,7 @@ use Consys\Advisor\Integration\Model\Model;
 use Consys\Advisor\Integration\Model\Options;
 use Consys\Advisor\Integration\Model\Prerequisites;
 use Consys\Advisor\Integration\Model\Schedule;
+use Consys\Advisor\Integration\Model\Sports;
 use Consys\Advisor\Integration\Model\Terms;
 use Consys\Advisor\Integration\Model\Users;
 use Consys\Advisor\Integration\Writer\Writer;
@@ -64,6 +65,11 @@ class Response extends Model
     public final function addUsers()
     {
         return new Users($this->writer);
+    }
+
+    public final function addSports()
+    {
+        return new Sports($this->writer);
     }
 
     protected function write()
