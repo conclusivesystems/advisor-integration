@@ -11,6 +11,10 @@ class AcademicGoal extends Model
         'id' => "present|max:255",
         'type' => 'present|in:official,',
         'flag' => 'max:255',
+        'include_in_goals_list' => 'boolean',
+        'degree_entered' => 'date',
+        'degree_conferred' => 'date',
+        'transcript_note' => 'max:4096',
     ];
 
     public function addGroup()
@@ -38,6 +42,34 @@ class AcademicGoal extends Model
             {
                 $writer->startProperty('flag');
                 $writer->value($this->get('flag'));
+                $writer->endProperty();
+            }
+            
+            if($this->get('include_in_goals_list') !== null)
+            {
+                $writer->startProperty('include_in_goals_list');
+                $writer->value($this->get('include_in_goals_list'));
+                $writer->endProperty();
+            }
+
+            if($this->get('degree_entered') !== null)
+            {
+                $writer->startProperty('degree_entered');
+                $writer->value($this->get('degree_entered'));
+                $writer->endProperty();
+            }
+
+            if($this->get('degree_conferred') !== null)
+            {
+                $writer->startProperty('degree_conferred');
+                $writer->value($this->get('degree_conferred'));
+                $writer->endProperty();
+            }
+
+            if($this->get('transcript_note') !== null)
+            {
+                $writer->startProperty('transcript_note');
+                $writer->value($this->get('transcript_note'));
                 $writer->endProperty();
             }
 

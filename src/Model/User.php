@@ -43,6 +43,13 @@ class User extends Model
         'option13' => "max:255",
         'option14' => "max:255",
         'option15' => "max:255",
+        'birthdate' => 'date',
+        'address_street1' => 'max:255',
+        'address_street2' => 'max:255',
+        'address_locality' => 'max:255',
+        'address_region' => 'max:255',
+        'address_country' => 'max:255',
+        'address_postal_code' => 'max:255',
     ];
 
     public final function addAttribute(array $data)
