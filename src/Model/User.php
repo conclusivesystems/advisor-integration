@@ -9,6 +9,7 @@ class User extends Model
 
     private $academicGoals = [];
     private $transcript = [];
+    private $awardedDegrees = [];
     private $messages = [];
     private $advisees = [];
     private $athletics = [];
@@ -55,6 +56,11 @@ class User extends Model
     public final function addAttribute(array $data)
     {
         return $this->attributes[] = new Attribute($data, $this->writer);
+    }
+
+    public function addAwardedDegree(array $data)
+    {
+        return $this->awardedDegrees[] = new AwardedDegree($data, $this->writer);
     }
 
     public function addCourse(array $data)
@@ -174,6 +180,16 @@ class User extends Model
                 $attribute->write();
             }
             $writer->endArray('attributes');
+        }
+
+        if(count($this->awardedDegrees) > 0)
+        {
+            $writer->startArray('awarded_degrees');
+            foreach ($this->awardedDegrees as $awardedDegree)
+            {
+                $awardedDegree->write();
+            }
+            $writer->endArray('awarded_degrees');
         }
 
         $writer->endObject();
