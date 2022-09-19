@@ -15,6 +15,8 @@ class CatalogCourse extends Model
         'min_credits' => "required|numeric",
         'max_credits' => "required|numeric",
         'credit_type' => "required|max:255",
+        'min_hours' => "required|numeric",
+        'max_hours' => "required|numeric",
         'archived' => "in:y,n,Y,N",
         'level' => "max:255",
         'url' => "max:4096|url",

@@ -20,6 +20,7 @@ class TranscriptCourse extends Model
         'level' => "max:255",
         'credits' => "numeric",
         'credit_type' => "required|max:255",
+        'hours' => "numeric",
         'transfer' => "in:y,n,Y,N",
         'transfer_code' => "max:255",
         'transfer_text' => "max:255",

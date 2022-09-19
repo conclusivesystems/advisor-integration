@@ -16,6 +16,8 @@ class ScheduleCourse extends Model
         'seats' => "integer|between:0,9999999999",
         'min_credits' => "numeric",
         'max_credits' => "numeric",
+        'min_hours' => "numeric",
+        'max_hours' => "numeric",
         'instructor' => "max:1024",
         'section' => "max:1024",
         'start_date' => "date",
