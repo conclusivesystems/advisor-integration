@@ -11,6 +11,7 @@ class AcademicGoal extends Model
         'id' => "present|max:255",
         'type' => 'present|in:official,',
         'flag' => 'max:255',
+        'expected_grad_date' => 'max:255',
     ];
 
     public function addGroup()
@@ -38,6 +39,13 @@ class AcademicGoal extends Model
             {
                 $writer->startProperty('flag');
                 $writer->value($this->get('flag'));
+                $writer->endProperty();
+            }
+
+            if($this->get('expected_grad_date') !== null)
+            {
+                $writer->startProperty('expected_grad_date');
+                $writer->value($this->get('expected_grad_date'));
                 $writer->endProperty();
             }
 
