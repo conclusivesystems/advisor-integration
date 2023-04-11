@@ -74,14 +74,12 @@ class Options extends Model
                 $writer->value($from);
                 $writer->endProperty();
 
-                $writer->startArray('old_codes');
                 foreach($groups as $group)
                 {
                     $writer->startObject('group_code');
                     $writer->value($group);
                     $writer->endObject();
                 }
-                $writer->endArray();
                 $writer->endObject();
             }
         }
