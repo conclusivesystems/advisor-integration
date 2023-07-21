@@ -26,9 +26,13 @@ class Attribute extends Model
         $writer->startProperty('code');
         $writer->value($this->get('code'));
         $writer->endProperty();
-        $writer->startProperty('title');
-        $writer->value($this->get('title'));
-        $writer->endProperty();
+
+        if($this->get('title') !== null)
+        {
+            $writer->startProperty('title');
+            $writer->value($this->get('title'));
+            $writer->endProperty();
+        }
 
         if(count($this->values) > 0)
         {
