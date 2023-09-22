@@ -54,6 +54,8 @@ class User extends Model
         'address_region' => 'max:255',
         'address_country' => 'max:255',
         'address_postal_code' => 'max:255',
+        'enrollment_status' => 'max:1',
+        'enrollment_status_start_date' => 'date',
     ];
 
     public final function addAttribute(array $data)
