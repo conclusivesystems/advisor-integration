@@ -42,6 +42,7 @@ class TranscriptCourse extends Model
         'option13' => "max:255",
         'option14' => "max:255",
         'option15' => "max:255",
+        'drop_date' => "datetime",
     ];
 
     private $attributes = [];
