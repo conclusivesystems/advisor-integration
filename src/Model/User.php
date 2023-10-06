@@ -7,6 +7,7 @@ use Validator;
 class User extends Model
 {
 
+    private $userTypes = [];
     private $academicGoals = [];
     private $transcript = [];
     private $awardedDegrees = [];
@@ -18,7 +19,7 @@ class User extends Model
 
     static protected $rules = [
         'id' => "required|max:255",
-        'user_type' => "required|max:255",
+	'user_type' => "max:255",
         'username' => "required|max:255",
         'ssn' => "max:255",
         'ssn_previous' => "max:255",
@@ -57,6 +58,11 @@ class User extends Model
         'enrollment_status' => 'max:1',
         'enrollment_status_start_date' => 'date',
     ];
+
+    public final function addUserType(string $userType)
+    {
+	$this->userTypes[] = $userType;
+    }
 
     public final function addAttribute(array $data)
     {
@@ -115,6 +121,18 @@ class User extends Model
                 $writer->value($this->get($field));
                 $writer->endObject();
             }
+        }
+
+        if(count($this->userTypes) > 0)
+        {
+	    $writer->startArray('user_types');
+            foreach($this->userTypes as $userType)
+	    {
+		$writer->startObject('user_type');
+                $writer->value($userType);
+		$writer->endObject();
+            }
+            $writer->endArray();
         }
 
         if(count($this->academicGoals) > 0)
