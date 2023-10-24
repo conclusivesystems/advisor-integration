@@ -1,12 +1,12 @@
 <?php namespace Consys\Advisor\Integration\Model;
 
 use Consys\Advisor\Integration\Writer\Writer;
-use Validator;
 
 class Term extends Model
 {
     static protected $rules = [
         'foreign_key' => "max:255",
+        'title' => 'max:255',
         'year' => "required|integer|min:1900|max:9999",
         'period' => "required|max:255",
         'start' => "date",
