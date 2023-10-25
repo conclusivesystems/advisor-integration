@@ -2,7 +2,6 @@
 
 use Consys\Advisor\Integration\Model\Attribute\Attribute;
 use Consys\Advisor\Integration\Writer\Writer;
-use Validator;
 
 class TranscriptCourse extends Model
 {
@@ -43,6 +42,8 @@ class TranscriptCourse extends Model
         'option14' => "max:255",
         'option15' => "max:255",
         'drop_date' => "datetime",
+        'created_at' => "datetime",
+        'updated_at' => "datetime",
     ];
 
     private $attributes = [];
