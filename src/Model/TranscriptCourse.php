@@ -42,6 +42,7 @@ class TranscriptCourse extends Model
         'option14' => "max:255",
         'option15' => "max:255",
         'drop_date' => "datetime",
+        'enrolled_at' => "datetime",
         'created_at' => "datetime",
         'updated_at' => "datetime",
     ];
