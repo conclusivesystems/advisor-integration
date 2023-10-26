@@ -41,10 +41,10 @@ class TranscriptCourse extends Model
         'option13' => "max:255",
         'option14' => "max:255",
         'option15' => "max:255",
-        'drop_date' => "datetime",
-        'enrolled_at' => "datetime",
-        'created_at' => "datetime",
-        'updated_at' => "datetime",
+        'drop_date' => "date",
+        'enrolled_at' => "date",
+        'created_at' => "date",
+        'updated_at' => "date",
     ];
 
     private $attributes = [];
