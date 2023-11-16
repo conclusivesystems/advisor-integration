@@ -1,13 +1,10 @@
 <?php namespace Consys\Advisor\Integration\Model;
 
-use Consys\Advisor\Integration\Writer\Writer;
-use Validator;
-
 class Meeting extends Model
 {
     static protected $rules = [
         'room' => "max:255",
-        'day' => "required|in:n,m,t,w,r,f,s",
+        'day' => "required|in:u,n,m,t,w,r,f,s",
         'start_time' => "required|regex:/^[0-9][0-9]:[0-9][0-9]:[0-9][0-9]\$/",
         'end_time' => "required|regex:/^[0-9][0-9]:[0-9][0-9]:[0-9][0-9]\$/",
     ];
