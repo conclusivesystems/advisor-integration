@@ -8,6 +8,8 @@ class TranscriptCourse extends Model
     static protected $rules = [
         'id' => "required|max:255",
         'course_id' => "max:255",
+        'session_foreign_key' => "max:255",
+        'section_foreign_key' => "max:255",
         'prefix' => "present|max:255",
         'number' => "present|max:255",
         'suffix' => "present|max:255",
