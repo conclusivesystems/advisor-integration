@@ -12,6 +12,7 @@ class CatalogCourse extends Model
         'number' => "present|max:255",
         'suffix' => "present|max:255",
         'title' => "present|max:255",
+        'description' => "max:16777215",
         'min_credits' => "required|numeric",
         'max_credits' => "required|numeric",
         'credit_type' => "required|max:255",
