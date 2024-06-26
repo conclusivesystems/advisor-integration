@@ -1,6 +1,7 @@
 <?php namespace Consys\Advisor\Integration;
 
 use Consys\Advisor\Integration\Model\Catalog;
+use Consys\Advisor\Integration\Model\DeliveryMethods;
 use Consys\Advisor\Integration\Model\Equivalencies;
 use Consys\Advisor\Integration\Model\Model;
 use Consys\Advisor\Integration\Model\Options;
@@ -70,6 +71,10 @@ class Response extends Model
     public final function addSports()
     {
         return new Sports($this->writer);
+    }
+    public final function addDeliveryMethod()
+    {
+        return new DeliveryMethods($this->writer);
     }
 
     protected function write()
