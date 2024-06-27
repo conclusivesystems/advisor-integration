@@ -22,6 +22,7 @@ class ScheduleCourse extends Model
         'start_date' => "date",
         'end_date' => "date",
         'url' => "max:4096|url",
+        'delivery_method' => "integer"
     ];
 
     public function addMeeting(array $data)
