@@ -10,6 +10,8 @@ abstract class Model
 
     private $saved = false;
 
+    private $writer;
+
     static protected $rules = [];
 
     public function __construct(array $data, Writer $writer)
