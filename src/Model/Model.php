@@ -10,7 +10,7 @@ abstract class Model
 
     private $saved = false;
 
-    private $writer;
+    protected $writer;
 
     static protected $rules = [];
 
