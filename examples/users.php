@@ -122,6 +122,26 @@ users in the specified groups to be in the new group! This is an example ONLY! *
             'option14' => "whatever14",
             'option15' => "whatever15",
         ]);
+        $user->addTestScore([
+            'name' => 'Example Test',
+            'score' => '92',
+            'taken_at' => '03-26-2025',
+            'option1' => 'whatever',
+            'option2' => 'whatever',
+            'option3' => 'whatever',
+            'option4' => 'whatever',
+            'option5' => 'whatever',
+            'option6' => 'whatever',
+            'option7' => 'whatever',
+            'option8' => 'whatever',
+            'option9' => 'whatever',
+            'option10' => 'whatever',
+            'option11' => 'whatever',
+            'option12' => 'whatever',
+            'option13' => 'whatever',
+            'option14' => 'whatever',
+            'option15' => 'whatever',
+        ]);
 //You can loop over messages for as many messages as you want this user to see.
         $user->addMessage([
             'type' => "Info",
