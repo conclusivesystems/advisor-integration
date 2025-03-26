@@ -17,6 +17,8 @@ class User extends Model
     private $milestones = [];
     private $attributes = [];
 
+    private $testScores = [];
+
     static protected $rules = [
         'id' => "required|max:255",
 	'user_type' => "max:255",
@@ -102,6 +104,11 @@ class User extends Model
     public function addAdvisee(array $data)
     {
         return $this->advisees[] = new Advisee($data, $this->writer);
+    }
+
+    public function addTestScore(array $data)
+    {
+        return $this->testScores[] = new TestScore($data, $this->writer);
     }
 
     protected function write()
@@ -213,6 +220,16 @@ class User extends Model
                 $awardedDegree->write();
             }
             $writer->endArray('awarded_degrees');
+        }
+
+        if(count($this->testScores) > 0)
+        {
+            $writer->startArray('test_scores');
+            foreach($this->testScores as $ts)
+            {
+                $ts->write($writer);
+            }
+            $writer->endArray();
         }
 
         $writer->endObject();
