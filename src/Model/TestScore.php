@@ -6,6 +6,7 @@ use Validator;
 class TestScore extends Model
 {
     static protected $rules = [
+        'id' => 'required|max:255',
         'name' => 'required|max:255',
         'score' => 'max:255',
         'taken_at' => 'date',
